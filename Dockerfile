@@ -23,6 +23,7 @@ RUN apt-get update \
         libfreetype6-dev \
         libssl-dev \
         libmcrypt-dev \
+        libxml2 \
     && rm -rf /var/lib/apt/lists/*
 
 # Install the PHP mcrypt extention
@@ -52,11 +53,12 @@ RUN docker-php-ext-install exif
 RUN docker-php-ext-install ftp
 
 # Install the PHP intl extention
-RUN docker-php-ext-configure intl
-RUN docker-php-ext-install intl
+RUN docker-php-ext-install intl && \
+    docker-php-ext-configure intl
 
 # Install the PHP simplexml extention
-RUN docker-php-ext-install simplexml
+RUN docker-php-ext-install simplexml && \
+    docker-php-ext-configure simplexml
 
 # Install the PHP xml extention
 RUN docker-php-ext-install xml
