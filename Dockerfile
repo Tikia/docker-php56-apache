@@ -55,23 +55,8 @@ RUN docker-php-ext-install ftp
 RUN docker-php-ext-configure intl
 RUN docker-php-ext-install intl
 
-# Install the PHP imagick extention
-RUN docker-php-ext-install imagick
-
-# Install the PHP imap extention
-RUN docker-php-ext-install imap
-
 # Install the PHP memcache extention
 RUN docker-php-ext-install memcache
-
-# Install the PHP pspell extention
-RUN docker-php-ext-install pspell
-
-# Install the PHP recode extention
-RUN docker-php-ext-install recode
-
-# Install the PHP sqlite3 extention
-RUN docker-php-ext-install sqlite3
 
 # Install the PHP tidy extention
 RUN docker-php-ext-install tidy
@@ -80,9 +65,6 @@ RUN docker-php-ext-install tidy
 RUN docker-php-ext-install simplexml
 
 # Install the PHP xml extention
-RUN docker-php-ext-install xml
-
-# Install the PHP xmlwriter extention
 RUN docker-php-ext-install xml
 
 # Install the PHP xmlrpc extention
