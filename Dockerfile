@@ -48,9 +48,6 @@ RUN docker-php-ext-install exif
 # Install the PHP ftp extention
 RUN docker-php-ext-install ftp
 
-# Install the PHP curl extention
-RUN docker-php-ext-install curl
-
 # Install the PHP intl extention
 RUN docker-php-ext-install intl
 
