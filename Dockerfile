@@ -6,7 +6,7 @@ RUN apt-get update
 RUN apt-get -y upgrade
 
 #Add php5.6 unofficial repository (https://launchpad.net/~ondrej/+archive/ubuntu/php)
-RUN apt-get install apt-transport-https lsb-release ca-certificates
+RUN apt-get -y install apt-transport-https ca-certificates
 RUN curl https://packages.sury.org/php/apt.gpg | apt-key add -
 RUN echo "deb https://packages.sury.org/php/ stretch main" > /etc/apt/sources.list.d/php.list
 RUN apt-get update
