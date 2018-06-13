@@ -20,7 +20,6 @@ RUN apt-get update \
         libfreetype6-dev \
         libssl-dev \
         libmcrypt-dev \
-        libxml2 \
     && rm -rf /var/lib/apt/lists/*
 
 # Install the PHP mcrypt extention
@@ -42,9 +41,6 @@ RUN docker-php-ext-install gd && \
         --with-jpeg-dir=/usr/lib \
         --with-freetype-dir=/usr/include/freetype2 && \
     docker-php-ext-install gd
-
-# Install the PHP dom extention
-RUN docker-php-ext-install dom
 
 # Install the PHP exif extention
 RUN docker-php-ext-install exif
