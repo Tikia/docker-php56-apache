@@ -1,5 +1,8 @@
-FROM debian:stretch
+FROM debian:stretch-slim
 MAINTAINER Tikia "renaud@tikia.net"
+
+#Add php5.6 unofficial repository (https://launchpad.net/~ondrej/+archive/ubuntu/php)
+RUN echo "deb http://ppa.launchpad.net/ondrej/php/ubuntu `lsb_release -cs` main" > /etc/apt/sources.list.d/php.list
 
 #Update OS
 RUN apt-get update
