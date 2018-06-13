@@ -12,6 +12,7 @@ RUN apt-get -y install ntp ntpdate
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
         curl \
+        g++ \
         libmemcached-dev \
         libz-dev \
         libpq-dev \
