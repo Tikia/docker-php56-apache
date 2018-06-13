@@ -22,14 +22,14 @@ RUN apt-get update \
         libmcrypt-dev \
     && rm -rf /var/lib/apt/lists/*
 
-# Install the PHP common extention
-RUN docker-php-ext-install common
-
 # Install the PHP mcrypt extention
 RUN docker-php-ext-install mcrypt
 
 # Install the PHP pdo_mysql extention
 RUN docker-php-ext-install mysqli && docker-php-ext-install pdo_mysql
+
+# Install the PHP mysql extention
+RUN docker-php-ext-install mysql
 
 # Install the PHP pdo_pgsql extention
 RUN docker-php-ext-install pdo_pgsql
@@ -41,6 +41,15 @@ RUN docker-php-ext-install gd && \
         --with-jpeg-dir=/usr/lib \
         --with-freetype-dir=/usr/include/freetype2 && \
     docker-php-ext-install gd
+
+# Install the PHP dom extention
+RUN docker-php-ext-install dom
+
+# Install the PHP exif extention
+RUN docker-php-ext-install exif
+
+# Install the PHP ftp extention
+RUN docker-php-ext-install ftp
 
 # Install the PHP curl extention
 RUN docker-php-ext-install curl
@@ -72,7 +81,13 @@ RUN docker-php-ext-install sqlite3
 # Install the PHP tidy extention
 RUN docker-php-ext-install tidy
 
+# Install the PHP simplexml extention
+RUN docker-php-ext-install simplexml
+
 # Install the PHP xml extention
+RUN docker-php-ext-install xml
+
+# Install the PHP xmlwriter extention
 RUN docker-php-ext-install xml
 
 # Install the PHP xmlrpc extention
@@ -86,6 +101,9 @@ RUN docker-php-ext-install mbstring
 
 # Install the PHP gettext extention
 RUN docker-php-ext-install gettext
+
+# Install the PHP snmp extention
+RUN docker-php-ext-install snmp
 
 # Install the PHP zip extention
 RUN docker-php-ext-install zip
