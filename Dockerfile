@@ -55,12 +55,6 @@ RUN docker-php-ext-install ftp
 RUN docker-php-ext-configure intl
 RUN docker-php-ext-install intl
 
-# Install the PHP memcache extention
-RUN docker-php-ext-install memcache
-
-# Install the PHP tidy extention
-RUN docker-php-ext-install tidy
-
 # Install the PHP simplexml extention
 RUN docker-php-ext-install simplexml
 
@@ -69,9 +63,6 @@ RUN docker-php-ext-install xml
 
 # Install the PHP xmlrpc extention
 RUN docker-php-ext-install xmlrpc
-
-# Install the PHP xsl extention
-RUN docker-php-ext-install xsl
 
 # Install the PHP mbstring extention
 RUN docker-php-ext-install mbstring
