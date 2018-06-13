@@ -102,7 +102,7 @@ RUN docker-php-ext-install mbstring
 # Install the PHP gettext extention
 RUN docker-php-ext-install gettext
 
-# Install the PHP snmp extention
+# Install the PHP shmop extention
 RUN docker-php-ext-install shmop
 
 # Install the PHP zip extention
