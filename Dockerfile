@@ -55,9 +55,6 @@ RUN docker-php-ext-install ftp
 RUN docker-php-ext-configure intl
 RUN docker-php-ext-install intl
 
-# Install the PHP pear extention
-RUN docker-php-ext-install pear
-
 # Install the PHP imagick extention
 RUN docker-php-ext-install imagick
 
