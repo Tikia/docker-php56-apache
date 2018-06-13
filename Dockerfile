@@ -13,6 +13,8 @@ RUN apt-get update \
     && apt-get install -y --no-install-recommends \
         curl \
         g++ \
+        zlib1g-dev \
+        libicu-dev \
         libmemcached-dev \
         libz-dev \
         libpq-dev \
@@ -50,6 +52,7 @@ RUN docker-php-ext-install exif
 RUN docker-php-ext-install ftp
 
 # Install the PHP intl extention
+RUN docker-php-ext-configure intl
 RUN docker-php-ext-install intl
 
 # Install the PHP pear extention
