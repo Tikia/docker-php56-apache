@@ -9,17 +9,18 @@ RUN apt-get -y upgrade
 RUN apt-get -y install ntp ntpdate
 
 # Install "curl", "libmemcached-dev", "libpq-dev", "libjpeg-dev", "libpng12-dev", "libfreetype6-dev", "libssl-dev", "libmcrypt-dev",
-RUN apt-get update && \
-    apt-get install -y --no-install-recommends \
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends \
         curl \
         libmemcached-dev \
         libz-dev \
         libpq-dev \
         libjpeg-dev \
-        libpng12-dev \
+        libpng-dev \
         libfreetype6-dev \
         libssl-dev \
-        libmcrypt-dev
+        libmcrypt-dev \
+    && rm -rf /var/lib/apt/lists/*
 
 # Install the PHP common extention
 RUN docker-php-ext-install common
