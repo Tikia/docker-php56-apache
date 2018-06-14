@@ -8,7 +8,7 @@ RUN apt-get -y upgrade
 #Install NTP
 RUN apt-get -y install ntp ntpdate
 
-# Install "curl", "libmemcached-dev", "libpq-dev", "libjpeg-dev", "libpng12-dev", "libfreetype6-dev", "libssl-dev", "libmcrypt-dev", "libxml2"
+# Install dependencies
 RUN apt-get install -y \
         curl \
         g++ \
