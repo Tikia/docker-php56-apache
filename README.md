@@ -1,6 +1,6 @@
 # docker-php56-apache
 
-Based on php/5.6-apache
+Based on php:5.6-apache
 
 Install :
 - NTP, NTPdate
