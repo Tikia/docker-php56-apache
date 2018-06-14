@@ -9,38 +9,37 @@ RUN apt-get -y upgrade
 RUN apt-get -y install ntp ntpdate
 
 # Install "curl", "libmemcached-dev", "libpq-dev", "libjpeg-dev", "libpng12-dev", "libfreetype6-dev", "libssl-dev", "libmcrypt-dev", "libxml2"
-RUN apt-get update \
-    && apt-get install -y --no-install-recommends \
+RUN apt-get install -y \
         curl \
         g++ \
-        zlib1g-dev \
+        zlib1g \
         libicu-dev \
         libmemcached-dev \
-        libz-dev \
         libpq-dev \
         libjpeg-dev \
         libpng-dev \
         libfreetype6-dev \
         libssl-dev \
         libmcrypt-dev \
-        libxml2 \
-    && rm -rf /var/lib/apt/lists/*
+        libxml2-dev \
+        libc-client-dev \
+        libkrb5-dev \
+        libldb-dev \
+        libldap2-dev \
+        librecode-dev \
+        libtidy-dev
 
 # Install the PHP mcrypt extention
 RUN docker-php-ext-install mcrypt
 
-# Install the PHP pdo_mysql extention
-RUN docker-php-ext-install mysqli && docker-php-ext-install pdo_mysql
+# Install the PHP mysqli, pdo_mysql and mysql extention
+RUN docker-php-ext-install mysqli && docker-php-ext-install pdo_mysql && docker-php-ext-install mysql
 
-# Install the PHP mysql extention
-RUN docker-php-ext-install mysql
-
-# Install the PHP pdo_pgsql extention
-RUN docker-php-ext-install pdo_pgsql
+# Install the PHP pdo_pgsql and pgsql extention
+RUN docker-php-ext-install pdo_pgsql && docker-php-ext-install pgsql
 
 # Install the PHP gd library
-RUN docker-php-ext-install gd && \
-    docker-php-ext-configure gd \
+RUN docker-php-ext-configure gd \
         --enable-gd-native-ttf \
         --with-jpeg-dir=/usr/lib \
         --with-freetype-dir=/usr/include/freetype2 && \
@@ -52,22 +51,43 @@ RUN docker-php-ext-install exif
 # Install the PHP ftp extention
 RUN docker-php-ext-install ftp
 
+# Install the PHP imap extention
+RUN docker-php-ext-configure imap --with-kerberos --with-imap-ssl && \
+    docker-php-ext-install imap
+
+# Install the PHP ldap extention
+RUN ln -s /usr/lib/x86_64-linux-gnu/libldap.so /usr/lib/libldap.so && \
+    ln -s /usr/lib/x86_64-linux-gnu/liblber.so /usr/lib/liblber.so
+RUN docker-php-ext-install ldap
+
 # Install the PHP intl extention
-RUN docker-php-ext-install intl && \
-    docker-php-ext-configure intl
+RUN docker-php-ext-configure intl && \
+    docker-php-ext-install intl
 
 # Install the PHP simplexml extention
-RUN docker-php-ext-install simplexml && \
-    docker-php-ext-configure simplexml
+RUN docker-php-ext-configure simplexml && \
+    docker-php-ext-install simplexml
 
 # Install the PHP xml extention
 RUN docker-php-ext-install xml
 
+# Install the PHP tidy extention
+RUN docker-php-ext-install tidy
+
 # Install the PHP xmlrpc extention
 RUN docker-php-ext-install xmlrpc
 
+# Install the PHP opcache extention
+RUN docker-php-ext-install opcache
+
+# Install the PHP json extention
+RUN docker-php-ext-install json
+
 # Install the PHP mbstring extention
 RUN docker-php-ext-install mbstring
+
+# Install the PHP mbstring extention
+RUN docker-php-ext-install recode
 
 # Install the PHP gettext extention
 RUN docker-php-ext-install gettext
@@ -78,15 +98,23 @@ RUN docker-php-ext-install shmop
 # Install the PHP zip extention
 RUN docker-php-ext-install zip
 
+# Install the PHP dom extention
+RUN docker-php-ext-install dom
+
+# Install the PHP iconv extention
+RUN docker-php-ext-install iconv
+
+# Install the PHP session extention
+RUN docker-php-ext-install session
+
+# Install the PHP sockets extention
+RUN docker-php-ext-install sockets
+
 #Activate Apache module : SSL, rewrite include status
 RUN a2enmod rewrite ssl include status
-RUN a2ensite default-ssl
 
 #Install letsencrypt
-RUN apt-get -y install letsencrypt.sh-apache
-
-#Restart Apache
-RUN service apache2 restart
+RUN apt-get -y install letsencrypt.sh-apache2
 
 #Define port
 EXPOSE 80
