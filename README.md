@@ -1,19 +1,15 @@
 # docker-php56-apache
 
-Based on Debian 9 Stretch (docker image debian/stretch)
+Based on php/5.6-apache
 
 Install :
 - NTP, NTPdate
-- Apache2
-- PHP 5.6
-- libapache2-mod-php5.6
-- php5.6-common php5.6-mysql php5.6-curl php5.6-gd php5.6-intl php-pear php-imagick php5.6-imap mcrypt php5.6-mcrypt php-memcache php5.6-pspell php5.6-recode php5.6-sqlite3 php5.6-tidy php5.6-xml php5.6-xmlrpc php5.6-xsl php5.6-mbstring php-gettext php5.6-zip imagemagick php-imagick5.6
-- python-letsencrypt-apache
+- curl, g++, zlib1g, libicu-dev, libmemcached-dev, libpq-dev, libjpeg-dev, libpng-dev, libfreetype6-dev, libssl-dev, libmcrypt-dev, libxml2-dev, libc-client-dev, libkrb5-dev, libldb-dev, libldap2-dev, librecode-dev, libtidy-dev
+- php extensions : mcrypt, mysqli, pdo_mysql, mysql, pdo_pgsql, pgsql, gd, exif, ftp, imap, ldap, intl, simplexml, xml, tidy, xmlrpc, opcache, json, mbstring, recode, gettext, shmop, zip, dom, iconv, session, sockets
+- letsencrypt.sh-apache2
 
 Config Apache :
 - Active module : rewrite ssl include status
-- Active site : default-ssl
-- vHost file
 
 Port exposed : 80
 
